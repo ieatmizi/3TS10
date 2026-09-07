@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3T - Bắt Đúng Tín Hiệu, Chọn Đúng Laptop | ITB Club</title>
+  <meta name="description" content="Hệ thống tư vấn laptop thông minh dành cho sinh viên đại học - Phân tích cấu hình, ngành học và ngân sách tối ưu.">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <!-- FIXED FLOATING "TƯ VẤN THÊM" BUTTON (CHỈ HIỂN THỊ Ở TRANG GỢI Ý / KẾT QUẢ) -->
+  <button type="button" class="btn-consult-floating-fixed hidden" id="btn-floating-consult">
+    🎧 Tư vấn thêm
+  </button>
+
+  <div class="site-wrapper">
+    
+    <!-- ===================================================================
+         HEADER / NAVBAR (MOCKUP)
+         =================================================================== -->
+    <header class="site-header">
+      <a href="#" class="header-brand-logo brand-home-trigger" title="3T Next Signal">
+        <img src="./img/Main Title.png" alt="3T Next Signal Logo" class="brand-logo-img">
+      </a>
+
+      <nav class="header-nav-menu">
+        <a href="#" class="nav-link active brand-home-trigger">Trang chủ</a>
+        <a href="https://www.facebook.com/itbclub.uel" target="_blank" class="nav-link">Về chúng tôi</a>
+        <button type="button" class="btn-header-start" id="btn-header-consult">
+          <span>BẮT ĐẦU</span>
+          <span class="arrow-box-sm">→</span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- DATA STATUS / FALLBACK NOTIFICATION BANNER -->
+    <div id="data-fallback-banner" class="data-fallback-banner hidden" role="status">
+      <div class="fallback-content">
+        <span class="fallback-icon">⚠️</span>
+        <span class="fallback-text"><strong>Thông báo dữ liệu:</strong> Đang sử dụng nguồn dữ liệu dự phòng (Mock Fallback) do không thể tải file <code>data/laptop_file.json</code> trực tiếp. Hệ thống tư vấn và chấm điểm vẫn hoạt động đầy đủ!</span>
+      </div>
+      <button type="button" class="btn-close-banner" onclick="document.getElementById('data-fallback-banner').classList.add('hidden')" title="Đóng thông báo">✕</button>
+    </div>
+
+    <!-- ===================================================================
+         VIEW 1: HOME PAGE (BÁM SÁT 100% ẢNH MOCKUP MỚI NHẤT)
+         =================================================================== -->
+    <section class="home-page-container" id="home-view-container">
+      
+      <!-- 1. Hero Outer Card with Dashed Border -->
+      <div class="hero-outer-card">
+        
+        <div class="hero-main-content">
+          <!-- Left Column -->
+          <div class="hero-left-col">
+            <div class="hero-tag-pill-outlined">
+              <span class="dot-pink"></span>
+              <span>TƯ VẤN LAPTOP CHO SINH VIÊN</span>
+            </div>
+
+            <h1 class="hero-headline-title">
+              BẮT ĐÚNG <span class="text-pink">TÍN HIỆU</span><br>
+              CHỌN ĐÚNG LAPTOP
+            </h1>
+
+            <p class="hero-desc-text">
+              Trả lời 3 câu hỏi ngắn để nhận gợi ý laptop đúng nhu cầu, đúng ngân sách và đúng ngành học của bạn.
+            </p>
+
+            <div class="hero-actions-row">
+              <button type="button" class="btn-hero-cta-pink" id="btn-start-consult">
+                <span>NHẬN TƯ VẤN NGAY</span>
+                <span class="arrow-box-badge">→</span>
+              </button>
+            </div>
+
+            <!-- Hero Stats Box inside Hero Left -->
+            <div class="hero-stats-banner">
+              <div class="stat-item-block">
+                <div class="stat-number-yellow">800+</div>
+                <div class="stat-label-white">LƯỢT THAM GIA</div>
+              </div>
+              <div class="stat-item-block">
+                <div class="stat-number-yellow">60K+</div>
+                <div class="stat-label-white">LƯỢT TIẾP CẬN</div>
+              </div>
+              <div class="stat-item-block">
+                <div class="stat-number-yellow">12+</div>
+                <div class="stat-label-white">ĐỐI TÁC ĐỒNG HÀNH</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column (Arcade Claw Machine & Mascot Banner from img/Có_Elements-removebg.png) -->
+          <div class="hero-right-col">
+            <div class="hero-image-wrapper">
+              <div class="floating-sparkle-top">✦</div>
+              <div class="floating-sticker sticker-yellow">GOOD<br>SIGNAL!</div>
+              <img src="./img/Có_Elements-removebg.png" alt="3T Next Signal Arcade & Mascot" class="hero-3d-graphic hero-banner-art" onerror="this.src='./assets/hero-arcade.jpg'" />
+              <div class="floating-sticker sticker-teal">FREE<br>FOR STUDENTS</div>
+              <div class="sticker-press-start">● PRESS START</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 2. Benefits Section: GỌN HƠN. DỄ HƠN. ĐÚNG HƠN. -->
+      <div class="benefits-section-wrapper" id="benefits-section">
+        
+        <div class="benefits-header-row">
+          <div>
+            <span class="pill-outline-badge">VÌ SAO CHỌN 3T?</span>
+            <h2 class="benefits-main-title">
+              GỌN HƠN. DỄ HƠN.<br>
+              <span class="text-pink">ĐÚNG HƠN.</span>
+            </h2>
+          </div>
+          <div class="benefits-intro-right">
+            Không cần thuộc lòng thông số.<br>
+            Chỉ cần hiểu điều bạn thật sự cần.
+          </div>
+        </div>
+
+        <!-- 4 Column Grid -->
+        <div class="benefits-cards-grid-4">
+          <!-- Card 01 -->
+          <div class="benefit-card-box theme-mint">
+            <div class="card-box-top-row">
+              <span>01</span>
+              <span>✦</span>
+            </div>
+            <div class="card-box-center-icon">
+              <img src="./img/icon spark star.png" alt="Dành riêng cho sinh viên" class="benefit-pixel-icon">
+            </div>
+            <h3 class="card-box-title">Dành riêng cho sinh viên</h3>
+            <p class="card-box-desc">Gợi ý theo ngành học, thói quen và nhu cầu sử dụng thực.</p>
+          </div>
+
+          <!-- Card 02 -->
+          <div class="benefit-card-box theme-pink">
+            <div class="card-box-top-row">
+              <span>02</span>
+              <span>⇄</span>
+            </div>
+            <div class="card-box-center-icon">
+              <img src="./img/icon 2 chiều.png" alt="So sánh dễ dàng" class="benefit-pixel-icon">
+            </div>
+            <h3 class="card-box-title">So sánh dễ dàng</h3>
+            <p class="card-box-desc">Đặt cấu hình, giá và tính năng cạnh nhau trong một màn hình.</p>
+          </div>
+
+          <!-- Card 03 -->
+          <div class="benefit-card-box theme-yellow">
+            <div class="card-box-top-row">
+              <span>03</span>
+              <span>✓</span>
+            </div>
+            <div class="card-box-center-icon">
+              <img src="./img/icon tick.png" alt="Kết quả đáng tin cậy" class="benefit-pixel-icon">
+            </div>
+            <h3 class="card-box-title">Kết quả đáng tin cậy</h3>
+            <p class="card-box-desc">Mỗi gợi ý đều có lý do rõ ràng để bạn tự tin lựa chọn.</p>
+          </div>
+
+          <!-- Card 04 -->
+          <div class="benefit-card-box theme-blue">
+            <div class="card-box-top-row">
+              <span>04</span>
+              <span>♡</span>
+            </div>
+            <div class="card-box-center-icon">
+              <img src="./img/icon heart.png" alt="Miễn phí cho sinh viên" class="benefit-pixel-icon">
+            </div>
+            <h3 class="card-box-title">Miễn phí cho sinh viên</h3>
+            <p class="card-box-desc">Không thu phí, không quảng cáo sản phẩm linh tinh.</p>
+          </div>
+        </div>
+
+      </div>
+      
+      <!-- 4. How It Works Section: 3 BƯỚC. 1 CHIẾC MÁY ĐÚNG GU. -->
+      <div class="how-it-works-navy-banner" id="how-it-works-section">
+        
+        <!-- Left Info -->
+        <div class="how-left-info">
+          <span class="how-tag-pink">HOW IT WORKS</span>
+          <h2 class="how-headline">
+            3 BƯỚC. 1 CHIẾC MÁY<br>
+            <span class="text-pink">ĐÚNG GU.</span>
+          </h2>
+          <button type="button" class="btn-try-free-white" onclick="document.getElementById('btn-start-consult').click()">
+            <span>THỬ NGAY – MIỄN PHÍ</span>
+            <span class="arrow-box-badge">→</span>
+          </button>
+        </div>
+
+        <!-- Right 3 Steps -->
+        <div class="how-steps-interactive">
+          <div class="step-node-col">
+            <div class="step-circle-badge">01</div>
+            <p class="step-node-desc">Cho chúng tôi biết thói quen của bạn</p>
+          </div>
+
+          <div class="step-flow-arrow"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAA3QAAAN0BcFOiBwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKXSURBVFiF3ZdPSBRhGMZ/787OGkGxh/AWVKfC6qJ0qA4hSwdDSgwvnQSja9lhwShECs2iCIzAtOgPHQIr1kMGInnYQ2F/BKlDt9aTCSJLizoz+3aY3XV0N3c3Z9vog4/5dpbne5553+993hlRVao5AlVl91OAiIyJSFxEdpSF8ysFIpLdaApoVNVkKbhKpKABeCUiNVURUBsWgEbgmYgYRQGq6ssEFNCPQyHdvtVdA0NFcX4L0MkafXvH1C2hnIjrG+EEeAK0ALOemVh/VdWFjSKZPYQ66aY+Fk/TetnCdgCIqmp/QRzuqa0vmitIFRDmXU97BQA8GnNo77PJFFqHqg4XEtAMxMwgDEeDpJZg9oeSmHOv7lpJLZUgcZ0AgFvPHS7etQEcoE1VX3j/D6rqqIiMWzaRd1+UgfPBghsvJCExtyrIFbd6b3ZOiTTkF1Vnm8H8otL71DFwK6NJVSdyEVBVRGQ/8NkIYEw/CFG3W0p73DLGuZs2g6MOQBLXqKYg4wOqOgMMOmm4MGD7Tg5wrzPI6WMBgG3AaxHZCx4rznj4NyAc6zVpPuy/Sa5YcCJqMf4hDe7hPZJjUdV5oAeg+2FlohAy4eU1k0P7BGAnMPLvtONMCq4AdLcXroTNjhULWi5ZvP+q4Kag1RuBHiAcqQ9UJP/pNJy5msv/PHBcVRN5ZfhpOMSBPX+vDLOxvg0YZ5uN35InU67prJ2ZexkjOnowwNgNMw/bdT9HvgycypLDOit+3GWybHk29szFn6U9ablWLMAMUFfC3hVpRkHgO7CLzbfjNb9j8TQd/TnyaCFyoPovJP/fK1ltWLLkI4BRDFeJ7wKACaBJVZeL4iogoKwPEz9N/w1urz9ZKjn4GIE/HVVvx78AM0MK+VJJtIoAAAAASUVORK5CYII=" alt="→" class="step-flow-arrow-icon"></div>
+
+          <div class="step-node-col">
+            <div class="step-circle-badge">02</div>
+            <p class="step-node-desc">Chọn nhu cầu và ngân sách</p>
+          </div>
+
+          <div class="step-flow-arrow"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAA3QAAAN0BcFOiBwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKXSURBVFiF3ZdPSBRhGMZ/787OGkGxh/AWVKfC6qJ0qA4hSwdDSgwvnQSja9lhwShECs2iCIzAtOgPHQIr1kMGInnYQ2F/BKlDt9aTCSJLizoz+3aY3XV0N3c3Z9vog4/5dpbne5553+993hlRVao5AlVl91OAiIyJSFxEdpSF8ysFIpLdaApoVNVkKbhKpKABeCUiNVURUBsWgEbgmYgYRQGq6ssEFNCPQyHdvtVdA0NFcX4L0MkafXvH1C2hnIjrG+EEeAK0ALOemVh/VdWFjSKZPYQ66aY+Fk/TetnCdgCIqmp/QRzuqa0vmitIFRDmXU97BQA8GnNo77PJFFqHqg4XEtAMxMwgDEeDpJZg9oeSmHOv7lpJLZUgcZ0AgFvPHS7etQEcoE1VX3j/D6rqqIiMWzaRd1+UgfPBghsvJCExtyrIFbd6b3ZOiTTkF1Vnm8H8otL71DFwK6NJVSdyEVBVRGQ/8NkIYEw/CFG3W0p73DLGuZs2g6MOQBLXqKYg4wOqOgMMOmm4MGD7Tg5wrzPI6WMBgG3AaxHZCx4rznj4NyAc6zVpPuy/Sa5YcCJqMf4hDe7hPZJjUdV5oAeg+2FlohAy4eU1k0P7BGAnMPLvtONMCq4AdLcXroTNjhULWi5ZvP+q4Kag1RuBHiAcqQ9UJP/pNJy5msv/PHBcVRN5ZfhpOMSBPX+vDLOxvg0YZ5uN35InU67prJ2ZexkjOnowwNgNMw/bdT9HvgycypLDOit+3GWybHk29szFn6U9ablWLMAMUFfC3hVpRkHgO7CLzbfjNb9j8TQd/TnyaCFyoPovJP/fK1ltWLLkI4BRDFeJ7wKACaBJVZeL4iogoKwPEz9N/w1urz9ZKjn4GIE/HVVvx78AM0MK+VJJtIoAAAAASUVORK5CYII=" alt="→" class="step-flow-arrow-icon"></div>
+
+          <div class="step-node-col">
+            <div class="step-circle-badge">03</div>
+            <p class="step-node-desc">Nhận danh sách gợi ý phù hợp</p>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================================================
+         VIEW 2: QUESTIONNAIRE FLOW (STEPS 1, 2, 3) - KHÔNG CHỌN TRƯỚC
+         =================================================================== -->
+    <div id="questionnaire-view-container" class="hidden">
+      
+      <!-- PROGRESS BAR (01 | 02 | 03) -->
+      <div class="progress-bar-container" id="main-progress-bar">
+        <div class="progress-step-item active" data-step="1">
+          <span class="step-num">01</span>
+          <div class="step-line-track">
+            <div class="step-line-fill"></div>
+          </div>
+        </div>
+        <div class="progress-step-item" data-step="2">
+          <span class="step-num">02</span>
+          <div class="step-line-track">
+            <div class="step-line-fill"></div>
+          </div>
+        </div>
+        <div class="progress-step-item" data-step="3">
+          <span class="step-num">03</span>
+          <div class="step-line-track">
+            <div class="step-line-fill"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN ARCADE CONTAINER -->
+      <main class="arcade-question-card" id="main-arcade-card">
+        
+        <!-- Top Rivets Bar -->
+        <div class="card-top-rivets">
+          <span class="rivet-dot rivet-mint"></span>
+          <span class="rivet-dot rivet-yellow"></span>
+          <span class="rivet-dot rivet-pink"></span>
+          <span class="rivet-dot rivet-mint"></span>
+          <span class="rivet-dot rivet-yellow"></span>
+          <span class="rivet-dot rivet-pink"></span>
+          <span class="rivet-dot rivet-mint"></span>
+          <span class="rivet-dot rivet-yellow"></span>
+          <span class="rivet-dot rivet-pink"></span>
+          <span class="rivet-dot rivet-mint"></span>
+          <span class="rivet-dot rivet-yellow"></span>
+          <span class="rivet-dot rivet-pink"></span>
+        </div>
+
+        <!-- ===================================================================
+             STEP 1: HỆ ĐIỀU HÀNH (MOCKUP 4) - KHÔNG CHỌN TRƯỚC
+             =================================================================== -->
+        <div class="card-content-body question-step-container" id="step-1-container">
+          <div class="step-small-tag">CÂU HỎI 1 / 3</div>
+          <h2 class="question-title">Bạn hay sử dụng hệ điều hành gì?</h2>
+          <p class="question-subtitle">Giúp chúng tôi gợi ý dòng máy và hệ sinh thái phần mềm phù hợp với thói quen của bạn.</p>
+
+          <div class="os-grid-container">
+            <!-- Windows Card -->
+            <div class="os-select-card theme-mint" data-os="windows" id="card-os-windows">
+              <div class="os-icon-box">
+                <img src="./img/windows_311282.png" alt="Windows" class="os-icon-img">
+              </div>
+              <div class="os-name">Windows</div>
+              <div class="os-desc">Linh hoạt & phổ biến</div>
+            </div>
+
+            <!-- macOS Card -->
+            <div class="os-select-card theme-pink" data-os="macos" id="card-os-macos">
+              <div class="os-icon-box">
+                <img src="./img/MacOS.png" alt="macOS" class="os-icon-img">
+              </div>
+              <div class="os-name">macOS</div>
+              <div class="os-desc">Mượt mà & đồng bộ</div>
+            </div>
+
+            <!-- Không quan trọng Card -->
+            <div class="os-select-card theme-yellow" data-os="any" id="card-os-any">
+              <div class="os-icon-box">
+                <img src="./img/Không quan trọng.png" alt="Không quan trọng" class="os-icon-img">
+              </div>
+              <div class="os-name">Không quan trọng</div>
+              <div class="os-desc">Để 3T chọn giúp</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===================================================================
+             STEP 2: NGÀNH HỌC & NHÁNH CẤU HÌNH (MOCKUP 3) - KHÔNG CHỌN TRƯỚC
+             =================================================================== -->
+        <div class="card-content-body question-step-container hidden" id="step-2-container">
+          <div class="step-small-tag">CÂU HỎI 2 / 3</div>
+          <h2 class="question-title">Bạn học ngành gì?</h2>
+          <p class="question-subtitle">Ngành học giúp chúng tôi ưu tiên đúng hiệu năng, phần mềm và kiểu máy.</p>
+
+          <!-- Search Bar Input -->
+          <div class="search-input-wrapper">
+            <div class="search-icon-block">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#18333D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+            <input type="text" id="input-major-search" class="major-text-input" placeholder="Ví dụ: Thiết kế đồ họa, Công nghệ thông tin, Kinh tế..." />
+          </div>
+
+          <!-- Quick Major Suggestion Chips -->
+          <div class="major-chips-section">
+            <div class="chips-label">GỢI Ý PHỔ BIẾN</div>
+            <div class="chips-container">
+              <button type="button" class="major-chip-btn" data-major="Thiết kế đồ họa"><span class="chip-star">★</span> Thiết kế đồ họa</button>
+              <button type="button" class="major-chip-btn" data-major="Công nghệ thông tin"><span class="chip-star">★</span> Công nghệ thông tin</button>
+              <button type="button" class="major-chip-btn" data-major="Kinh tế"><span class="chip-star">★</span> Kinh tế</button>
+              <button type="button" class="major-chip-btn" data-major="Marketing"><span class="chip-star">★</span> Marketing</button>
+              <button type="button" class="major-chip-btn" data-major="Truyền thông"><span class="chip-star">★</span> Truyền thông</button>
+            </div>
+          </div>
+
+          <!-- Tip Box -->
+          <div class="tip-banner-box">
+            <strong>TIP!</strong> Nếu chưa thấy ngành của mình, bạn chỉ cần nhập tên ngành vào ô phía trên.
+          </div>
+
+          <!-- Branch Selection: Đã xác định cấu hình chưa? -->
+          <h3 class="branch-section-title">Bạn đã xác định cấu hình cần thiết chưa?</h3>
+          <div class="branch-grid-container">
+            <div class="branch-choice-card" data-branch="roi" id="branch-opt-roi">
+              <div class="branch-icon-badge">✓</div>
+              <span>Rồi, mình đã có yêu cầu cụ thể</span>
+            </div>
+            <div class="branch-choice-card" data-branch="chua" id="branch-opt-chua">
+              <div class="branch-icon-badge">✕</div>
+              <span>Chưa, mình cần được tư vấn</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===================================================================
+             STEP 3: TIÊU CHÍ CHI TIẾT (MOCKUP 1 & 2) - KHÔNG CHỌN TRƯỚC
+             =================================================================== -->
+        <div class="card-content-body question-step-container hidden" id="step-3-container">
+          <div class="step-small-tag">CÂU HỎI 3 / 3</div>
+          <h2 class="question-title">Bạn cần máy như thế nào?</h2>
+          <p class="question-subtitle">Chọn các tiêu chí quan trọng với bạn — có thể chọn nhiều mục trong mỗi nhóm.</p>
+
+          <!-- 3A. NHÁNH "CHƯA" - USER CHƯA BIẾT CẤU HÌNH (MOCKUP 1) -->
+          <div id="branch-unknown-content" class="branch-content-grid">
+            
+            <!-- 1. Ngân sách (Chọn 1) -->
+            <div class="option-group-section">
+              <div class="group-header-row">
+                <div class="group-title-label">NGÂN SÁCH</div>
+                <span class="group-rule-badge">CHỌN 1</span>
+              </div>
+              <div class="options-pill-grid">
+                <button type="button" class="option-btn" data-single-group="budget" data-value="duoi_15">Dưới 15 triệu</button>
+                <button type="button" class="option-btn" data-single-group="budget" data-value="15_25">15 – 25 triệu</button>
+                <button type="button" class="option-btn" data-single-group="budget" data-value="25_35">25 – 35 triệu</button>
+                <button type="button" class="option-btn" data-single-group="budget" data-value="tren_35">Trên 35 triệu</button>
+              </div>
+            </div>
+
+            <!-- 2. Mục đích chính (Chọn nhiều) -->
+            <div class="option-group-section">
+              <div class="group-header-row">
+                <div class="group-title-label">MỤC ĐÍCH CHÍNH</div>
+                <span class="group-rule-badge">CHỌN NHIỀU</span>
+              </div>
+              <div class="options-pill-grid">
+                <button type="button" class="option-btn" data-multi-group="purposes" data-value="hoc_tap">Học tập / Văn phòng</button>
+                <button type="button" class="option-btn" data-multi-group="purposes" data-value="do_hoa">Đồ họa / Dựng phim</button>
+                <button type="button" class="option-btn" data-multi-group="purposes" data-value="lap_trinh">Lập trình</button>
+                <button type="button" class="option-btn" data-multi-group="purposes" data-value="gaming">Chơi game</button>
+              </div>
+            </div>
+
+            <!-- 3. Cường độ sử dụng (Chọn 1) -->
+            <div class="option-group-section">
+              <div class="group-header-row">
+                <div class="group-title-label">CƯỜNG ĐỘ SỬ DỤNG</div>
+                <span class="group-rule-badge">CHỌN 1</span>
+              </div>
+              <div class="options-pill-grid">
+                <button type="button" class="option-btn" data-single-group="intensity" data-value="co_ban">Tác vụ cơ bản</button>
+                <button type="button" class="option-btn" data-single-group="intensity" data-value="da_nhiem">Nhiều tab / Đa nhiệm</button>
+                <button type="button" class="option-btn" data-single-group="intensity" data-value="nang">Phần mềm nặng</button>
+                <button type="button" class="option-btn" data-single-group="intensity" data-value="rat_nang">Tác vụ rất nặng</button>
+                <button type="button" class="option-btn" data-single-group="intensity" data-value="chuyen_nganh">Phần mềm chuyên ngành</button>
+              </div>
+            </div>
+
+            <!-- 4. Ưu tiên (Chọn 1) -->
+            <div class="option-group-section">
+              <div class="group-header-row">
+                <div class="group-title-label">ƯU TIÊN</div>
+                <span class="group-rule-badge">CHỌN 1</span>
+              </div>
+              <div class="options-pill-grid">
+                <button type="button" class="option-btn" data-single-group="priority" data-value="hieu_nang_cao">Hiệu năng cao</button>
+                <button type="button" class="option-btn" data-single-group="priority" data-value="mong_nhe">Mỏng nhẹ</button>
+                <button type="button" class="option-btn" data-single-group="priority" data-value="gia_tot">Giá tốt</button>
+                <button type="button" class="option-btn" data-single-group="priority" data-value="man_hinh_dep">Màn hình đẹp</button>
+                <button type="button" class="option-btn" data-single-group="priority" data-value="pin_lau">Pin lâu</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- 3B. NHÁNH "RỒI" - USER ĐÃ BIẾT CẤU HÌNH (MOCKUP 2) -->
+          <div id="branch-known-content" class="branch-content-grid hidden">
+            
+            <!-- 1. Ngân sách (Chọn 1) -->
+            <div class="option-group-section">
+              <div class="group-header-row">
+                <div class="group-title-label">NGÂN SÁCH</div>
+                <span class="group-rule-badge">CHỌN 1</span>
+              </div>
+              <div class="options-pill-grid">
+                <button type="button" class="option-btn" data-single-group="budget" data-value="duoi_15">Dưới 15 triệu</button>
+                <button type="button" class="option-btn" data-single-group="budget" data-value="15_25">15 – 25 triệu</button>
+                <button type="button" class="option-btn" data-single-group="budget" data-value="25_35">25 – 35 triệu</button>
+                <button type="button" class="option-btn" data-single-group="budget" data-value="tren_35">Trên 35 triệu</button>
+              </div>
+            </div>
+
+            <!-- 2. RAM (Chọn 1) -->
+            <div class="option-group-section">
+              <div class="group-header-row">
+                <div class="group-title-label">RAM</div>
+                <span class="group-rule-badge">CHỌN 1</span>
+              </div>
+              <div class="options-pill-grid">
+                <button type="button" class="option-btn" data-single-group="ram" data-value="ram_8">RAM 8GB</button>
+                <button type="button" class="option-btn" data-single-group="ram" data-value="ram_16">RAM 16GB</button>
+                <button type="button" class="option-btn" data-single-group="ram" data-value="ram_32">RAM 32GB</button>
+                <button type="button" class="option-btn" data-single-group="ram" data-value="ram_64">RAM 64GB+</button>
+              </div>
+            </div>
+
+            <!-- 3. Cấu hình (Chọn nhiều) -->
+            <div class="option-group-section">
+              <div class="group-header-row">
+                <div class="group-title-label">CẤU HÌNH</div>
+                <span class="group-rule-badge">CHỌN NHIỀU</span>
+              </div>
+              <div class="options-pill-grid">
+                <button type="button" class="option-btn" data-multi-group="config" data-value="ssd_256">SSD 256GB+</button>
+                <button type="button" class="option-btn" data-multi-group="config" data-value="ssd_512">SSD 512GB+</button>
+                <button type="button" class="option-btn" data-multi-group="config" data-value="ssd_1024">SSD 1TB+</button>
+                <button type="button" class="option-btn" data-multi-group="config" data-value="gpu_dedicated">Card đồ họa rời</button>
+                <button type="button" class="option-btn" data-multi-group="config" data-value="battery_10h">Pin trên 10 giờ</button>
+              </div>
+            </div>
+
+            <!-- 4. Ưu tiên (Chọn 1) -->
+            <div class="option-group-section">
+              <div class="group-header-row">
+                <div class="group-title-label">ƯU TIÊN</div>
+                <span class="group-rule-badge">CHỌN 1</span>
+              </div>
+              <div class="options-pill-grid">
+                <button type="button" class="option-btn" data-single-group="priority" data-value="hieu_nang_cao">Hiệu năng cao</button>
+                <button type="button" class="option-btn" data-single-group="priority" data-value="mong_nhe">Mỏng nhẹ</button>
+                <button type="button" class="option-btn" data-single-group="priority" data-value="gia_tot">Giá tốt</button>
+                <button type="button" class="option-btn" data-single-group="priority" data-value="man_hinh_dep">Màn hình đẹp</button>
+                <button type="button" class="option-btn" data-single-group="priority" data-value="pin_lau">Pin lâu</button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- ===================================================================
+             BOTTOM NAVIGATION BAR (JOYSTICK BAR)
+             =================================================================== -->
+        <nav class="card-bottom-navbar" id="questionnaire-nav-bar">
+          <button type="button" class="btn-nav-back" id="btn-global-back">
+            <span class="arrow-thick">←</span> QUAY LẠI
+          </button>
+
+          <div class="arcade-joystick-widget">
+            <div class="joystick-ball"></div>
+            <div class="joystick-base"></div>
+          </div>
+
+          <button type="button" class="btn-nav-next" id="btn-global-next">
+            <span id="btn-next-text">TIẾP THEO <span class="arrow-thick">→</span></span>
+          </button>
+        </nav>
+
+      </main>
+
+    </div>
+
+    <!-- ===================================================================
+         VIEW 3: RESULTS VIEW (MOCKUP 5)
+         =================================================================== -->
+    <section id="result-view-container" class="results-main-wrapper hidden">
+      
+      <!-- Top Big Headline Banner -->
+      <div class="results-header-banner">
+        <div class="banner-tag-label">✦ KẾT QUẢ GỢI Ý</div>
+        <h1 class="banner-headline">TÍN HIỆU ĐÃ KHỚP!</h1>
+      </div>
+
+      <!-- Result Meta Subheader -->
+      <div class="results-meta-row">
+        <div class="results-meta-left">
+          <span class="count-badge-pink" id="result-count-tag">03 GỢI Ý PHÙ HỢP</span>
+          <h2 class="meta-title-main">Đây là những chiếc máy dành cho bạn</h2>
+        </div>
+        <div class="meta-subtitle-right">
+          Giá và cấu hình có thể thay đổi theo từng thời điểm
+        </div>
+      </div>
+
+      <!-- 3 Laptop Cards Grid -->
+      <div class="results-grid-container" id="result-cards-grid">
+        <!-- Rendered dynamically by result.js -->
+      </div>
+
+      <!-- Empty State (No Match) -->
+      <div class="empty-state-box hidden" id="result-empty-state">
+        <div class="empty-state-icon">🔍</div>
+        <h3 class="empty-state-title">Chưa tìm thấy laptop phù hợp với các tiêu chí bạn đã chọn</h3>
+        <p class="empty-state-desc">Rất tiếc hiện chưa có mẫu máy nào đáp ứng trọn vẹn cả tiêu chí về hệ điều hành, ngân sách và cấu hình mong muốn.</p>
+        <button type="button" class="btn-hero-cta-pink" onclick="window.questionnaire.goToStep(3)">Quay lại chỉnh tiêu chí</button>
+      </div>
+
+      <!-- Bottom Disclaimer -->
+      <p class="bottom-disclaimer-text">
+        Đây là gợi ý tham khảo dựa trên thông tin bạn cung cấp, không phải bán hàng hay bảo hành từ CLB.
+        Vui lòng kiểm tra giá & cấu hình thực tế tại cửa hàng trước khi quyết định mua.
+      </p>
+
+      <!-- Bottom Tip Callout (Mockup 5) -->
+      <div class="results-bottom-callout-row">
+        <div class="tip-yellow-callout">
+          <strong>TIP!</strong> Nếu chưa thấy máy phù hợp, hãy nhấp vào ô <a href="https://www.facebook.com/itbclub.uel" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; font-weight: 900;">Tư vấn thêm</a> để được hỗ trợ nhé!
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <!-- ===================================================================
+       FOOTER (YELLOW BANNER - MOCKUP 5)
+       =================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-inner-wrapper">
+      
+      <!-- Col 1: Brand Logo -->
+      <div class="footer-col footer-col-logo">
+        <img src="./img/Main Title.png" alt="3T Next Signal Logo" class="footer-brand-img">
+      </div>
+
+      <!-- Col 2: About 3T & ITB Club -->
+      <div class="footer-col footer-col-about">
+        <h3 class="footer-brand-heading">3T - Tất tần tật máy tính</h3>
+        <p class="footer-about-text">
+          "Tất tần tật Next Signal" là chuỗi chương trình thường niên do Câu lạc bộ Hệ thống thông tin trong kinh doanh (ITB Club) tổ chức, được triển khai qua nhiều năm, nhằm tạo không gian giao lưu, chia sẻ và kết nối sinh viên với các chuyên gia, diễn giả và các đơn vị hoạt động trong lĩnh vực công nghệ.
+          <br><br>
+          Bên cạnh đó, chương trình còn đồng hành cùng sinh viên trong phát triển bản thân, chủ động thích nghi với thời đại số, và chuẩn bị tốt hơn cho hành trình nghề nghiệp trong tương lai.
+        </p>
+      </div>
+
+      <!-- Col 3: Contact & Social Network -->
+      <div class="footer-col footer-col-contact">
+        <h4 class="footer-col-title">Liên hệ</h4>
+        <ul class="footer-info-list">
+          <li><strong>THÔNG TIN CHI TIẾT:</strong></li>
+          <li>➤ <strong>Address:</strong> Đại học Kinh tế - Luật</li>
+          <li>669 QL1A Khu phố 3, Thủ Đức, TP.HCM</li>
+          <li>➤ <strong>Email:</strong> itbclub@st.uel.edu.vn</li>
+          <li>➤ <strong>Hotline:</strong></li>
+          <li>070.447.7397 (Kim Oanh)</li>
+          <li>081.205.4488 (Thái Hà)</li>
+        </ul>
+
+        <h4 class="footer-col-title" style="margin-top: 14px;">Social network</h4>
+        <div class="footer-social-links">
+          <a href="https://www.facebook.com/itbclub.uel" target="_blank" rel="noopener noreferrer">Fanpage ITB CLUB</a>
+          <a href="https://vn.linkedin.com/company/itbclub" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="#" target="_blank" rel="noopener noreferrer">3T - Tất tần tật máy tính</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-copyright-bar">
+      Copyright 2026 <strong>ITB CLUB</strong>
+    </div>
+  </footer>
+
+  <!-- Scripts: Clean Modular Architecture -->
+  <script src="./js/api.js"></script>
+  <script src="./js/mapping.js"></script>
+  <script src="./js/weights.js"></script>
+  <script src="./js/scoring.js"></script>
+  <script src="./js/questionnaire.js"></script>
+  <script src="./js/result.js"></script>
+  <script src="./js/app.js"></script>
+
+</body>
+</html>
