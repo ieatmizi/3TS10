@@ -119,6 +119,7 @@ function renderResults(topLaptops) {
   const emptyContainer = document.getElementById('result-empty-state');
   const resultCountTag = document.getElementById('result-count-tag');
   const btnFloatingConsult = document.getElementById('btn-floating-consult');
+  const backToCriteriaBtn = document.getElementById('back-to-criteria-has-results');
 
   if (homeContainer) homeContainer.classList.add('hidden');
   if (questionnaireContainer) questionnaireContainer.classList.add('hidden');
@@ -136,9 +137,11 @@ function renderResults(topLaptops) {
     if (cardsContainer) cardsContainer.innerHTML = '';
     if (cardsContainer) cardsContainer.classList.add('hidden');
     if (emptyContainer) emptyContainer.classList.remove('hidden');
+    if (backToCriteriaBtn) backToCriteriaBtn.classList.add('hidden');
     if (resultCountTag) resultCountTag.textContent = '00 GỢI Ý PHÙ HỢP';
   } else {
     if (emptyContainer) emptyContainer.classList.add('hidden');
+    if (backToCriteriaBtn) backToCriteriaBtn.classList.remove('hidden');
     if (cardsContainer) {
       cardsContainer.classList.remove('hidden');
       cardsContainer.innerHTML = topLaptops.map((laptop, idx) => createLaptopCardHTML(laptop, idx)).join('');

@@ -3059,3 +3059,162 @@ h1, h2, h3, h4, .font-heading {
     transform: none;
   }
 }
+
+
+/* =============================================
+   FLOATING "TƯ VẤN THÊM" BUTTON (Fixed Bottom-Right)
+   — Mint/Cyan neon with ring-pulse
+   ============================================= */
+.btn-consult-floating-fixed {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  background: linear-gradient(135deg, #00D4AA 0%, var(--mint-accent) 50%, #40FFE0 100%);
+  color: #090214;
+  border: 2.5px solid #090214;
+  border-radius: 50px;
+  padding: 16px 30px;
+  font-size: 15.5px;
+  font-weight: 900;
+  font-family: var(--font-main);
+  cursor: pointer;
+  box-shadow:
+    3px 4px 0px #090214,
+    0 0 22px rgba(0, 245, 212, 0.50),
+    0 0 60px rgba(0, 245, 212, 0.18);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.4px;
+  transition: all 0.22s ease;
+  animation: floatPulse 2.5s ease-in-out infinite;
+  overflow: hidden;
+}
+
+/* Animated ring-pulse around the button */
+.btn-consult-floating-fixed::before {
+  content: '';
+  position: absolute;
+  inset: -7px;
+  border-radius: 50px;
+  border: 2.5px solid var(--mint-accent);
+  opacity: 0;
+  animation: ringPulseCyan 2s ease-out infinite;
+  pointer-events: none;
+}
+
+.btn-consult-floating-fixed::after {
+  content: '';
+  position: absolute;
+  inset: -14px;
+  border-radius: 50px;
+  border: 2px solid var(--mint-accent);
+  opacity: 0;
+  animation: ringPulseCyan 2s 0.6s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes ringPulseCyan {
+  0%   { opacity: 0.65; transform: scale(0.95); }
+  80%  { opacity: 0;    transform: scale(1.12); }
+  100% { opacity: 0;    transform: scale(1.12); }
+}
+
+.btn-consult-floating-fixed:hover {
+  background: linear-gradient(135deg, #40FFE0, var(--mint-accent), #00D4AA);
+  transform: translateY(-4px) scale(1.06);
+  box-shadow:
+    4px 5px 0px #090214,
+    0 0 36px rgba(0, 245, 212, 0.70),
+    0 0 80px rgba(0, 245, 212, 0.22);
+}
+
+@keyframes floatPulse {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+
+/* =============================================
+   NÚT "QUAY LẠI CHỈNH TIÊU CHÍ" (Trang kết quả)
+   — Yellow/Gold solid gradient, shimmer sweep
+   ============================================= */
+.back-to-criteria-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 32px 0 12px;
+}
+
+.btn-back-criteria-pink {
+  position: relative;
+  background: linear-gradient(135deg, #FF2A85 0%, #ff4797 50%, #E91E6C 100%);
+  color: #fff;
+  border: 2.5px solid #090214;
+  border-radius: 10px;
+  padding: 16px 36px;
+  font-size: 15.5px;
+  font-weight: 900;
+  font-family: var(--font-main);
+  cursor: pointer;
+  letter-spacing: 0.6px;
+  box-shadow:
+    3px 4px 0px #090214,
+    0 0 20px rgba(255, 42, 133, 0.45),
+    0 0 50px rgba(255, 42, 133, 0.15);
+  transition: all 0.22s ease;
+  overflow: hidden;
+  animation: borderGlowPink 2.5s ease-in-out infinite;
+}
+
+/* Shimmer sweep across the button */
+.btn-back-criteria-pink::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 40%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.2) 60%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  animation: shimmerSweep 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmerSweep {
+  0%   { left: -100%; }
+  50%  { left: 130%;  }
+  100% { left: 130%;  }
+}
+
+@keyframes borderGlowPink {
+  0%, 100% {
+    box-shadow: 3px 4px 0px #090214, 0 0 20px rgba(255, 42, 133, 0.45), 0 0 50px rgba(255, 42, 133, 0.15);
+  }
+  50% {
+    box-shadow: 3px 4px 0px #090214, 0 0 32px rgba(255, 42, 133, 0.65), 0 0 65px rgba(255, 42, 133, 0.22);
+  }
+}
+
+.btn-back-criteria-pink:hover {
+  background: linear-gradient(135deg, #ff4797 0%, #FF2A85 50%, #ff6fb0 100%);
+  color: #fff;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow:
+    4px 5px 0px #090214,
+    0 0 36px rgba(255, 42, 133, 0.70),
+    0 0 70px rgba(255, 42, 133, 0.25);
+}
+
+.btn-back-criteria-pink:active {
+  transform: translateY(0px) scale(0.98);
+  box-shadow: 2px 2px 0px #090214, 0 0 14px rgba(255, 42, 133, 0.4);
+}
