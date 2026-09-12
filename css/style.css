@@ -1405,21 +1405,50 @@ h1, h2, h3, h4, .font-heading {
 }
 
 .btn-nav-back {
-  background-color: transparent;
-  border: 1.5px solid rgba(255, 255, 255, 0.35);
-  border-radius: 6px;
-  padding: 9px 18px;
+  position: relative;
+  background: linear-gradient(135deg, #FF2A85 0%, #ff4797 45%, #FFC93C 100%);
+  border: 2.5px solid #090214;
+  border-radius: 8px;
+  padding: 11px 24px;
   color: #FFFFFF;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 800;
   font-family: var(--font-main);
   cursor: pointer;
-  transition: all 0.15s ease;
+  overflow: hidden;
+  box-shadow: 3px 3px 0px #090214, 0 0 18px rgba(255, 42, 133, 0.45);
+  transition: all 0.18s ease;
+}
+
+.btn-nav-back::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.25) 40%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.25) 60%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  animation: shimmerSweepNavBack 2.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmerSweepNavBack {
+  0%   { left: -100%; }
+  50%  { left: 130%;  }
+  100% { left: 130%;  }
 }
 
 .btn-nav-back:hover {
-  border-color: #FFFFFF;
-  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 4px 4px 0px #090214, 0 0 26px rgba(255, 42, 133, 0.65);
 }
 
 .arcade-joystick-widget {
@@ -3063,17 +3092,13 @@ h1, h2, h3, h4, .font-heading {
 
 /* =============================================
    FLOATING "TƯ VẤN THÊM" BUTTON (Fixed Bottom-Right)
-<<<<<<< HEAD
    — Mint/Cyan neon with ring-pulse
-=======
->>>>>>> 1150c5e853f0b8b4e78a830c7b851e6428defd88
    ============================================= */
 .btn-consult-floating-fixed {
   position: fixed;
   bottom: 28px;
   right: 28px;
   z-index: 9999;
-<<<<<<< HEAD
   background: linear-gradient(135deg, #00D4AA 0%, var(--mint-accent) 50%, #40FFE0 100%);
   color: #090214;
   border: 2.5px solid #090214;
@@ -3133,78 +3158,46 @@ h1, h2, h3, h4, .font-heading {
     4px 5px 0px #090214,
     0 0 36px rgba(0, 245, 212, 0.70),
     0 0 80px rgba(0, 245, 212, 0.22);
-=======
-  background: linear-gradient(135deg, var(--pink-neon), #ff4797);
-  color: #fff;
-  border: 2px solid #090214;
-  border-radius: 50px;
-  padding: 14px 26px;
-  font-size: 14px;
-  font-weight: 800;
-  font-family: var(--font-main);
-  cursor: pointer;
-  box-shadow: 3px 3px 0px #090214, 0 0 20px rgba(255, 42, 133, 0.5);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.2s ease;
-  animation: floatPulse 2.5s ease-in-out infinite;
-}
-
-.btn-consult-floating-fixed:hover {
-  background: linear-gradient(135deg, #ff4797, var(--pink-neon));
-  transform: translateY(-3px) scale(1.04);
-  box-shadow: 4px 4px 0px #090214, 0 0 30px rgba(255, 42, 133, 0.7);
->>>>>>> 1150c5e853f0b8b4e78a830c7b851e6428defd88
 }
 
 @keyframes floatPulse {
   0%, 100% { transform: translateY(0); }
-<<<<<<< HEAD
   50% { transform: translateY(-6px); }
-=======
-  50% { transform: translateY(-5px); }
->>>>>>> 1150c5e853f0b8b4e78a830c7b851e6428defd88
 }
 
 
 /* =============================================
    NÚT "QUAY LẠI CHỈNH TIÊU CHÍ" (Trang kết quả)
-<<<<<<< HEAD
-   — Yellow/Gold solid gradient, shimmer sweep
-=======
->>>>>>> 1150c5e853f0b8b4e78a830c7b851e6428defd88
+   — Màu nổi bật cố định, hover chỉ nảy lên
    ============================================= */
 .back-to-criteria-wrapper {
   display: flex;
   justify-content: center;
-<<<<<<< HEAD
   padding: 32px 0 12px;
 }
 
 .btn-back-criteria-pink {
   position: relative;
-  background: linear-gradient(135deg, #FF2A85 0%, #ff4797 50%, #E91E6C 100%);
+  background: linear-gradient(135deg, #FF2A85 0%, #ff4797 45%, #FFC93C 100%);
   color: #fff;
-  border: 2.5px solid #090214;
-  border-radius: 10px;
-  padding: 16px 36px;
-  font-size: 15.5px;
+  border: 3px solid #090214;
+  border-radius: 12px;
+  padding: 18px 44px;
+  font-size: 16px;
   font-weight: 900;
   font-family: var(--font-main);
   cursor: pointer;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
   box-shadow:
-    3px 4px 0px #090214,
-    0 0 20px rgba(255, 42, 133, 0.45),
-    0 0 50px rgba(255, 42, 133, 0.15);
+    4px 5px 0px #090214,
+    0 0 28px rgba(255, 42, 133, 0.55),
+    0 0 60px rgba(255, 42, 133, 0.22);
   transition: all 0.22s ease;
   overflow: hidden;
-  animation: borderGlowPink 2.5s ease-in-out infinite;
 }
 
-/* Shimmer sweep across the button */
+/* Vệt sáng lướt qua nút */
 .btn-back-criteria-pink::before {
   content: '';
   position: absolute;
@@ -3215,67 +3208,31 @@ h1, h2, h3, h4, .font-heading {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.2) 40%,
-    rgba(255, 255, 255, 0.4) 50%,
-    rgba(255, 255, 255, 0.2) 60%,
+    rgba(255, 255, 255, 0.25) 40%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.25) 60%,
     transparent 100%
   );
   transform: skewX(-20deg);
-  animation: shimmerSweep 3s ease-in-out infinite;
+  animation: shimmerSweepBackCriteria 2.6s ease-in-out infinite;
   pointer-events: none;
 }
 
-@keyframes shimmerSweep {
+@keyframes shimmerSweepBackCriteria {
   0%   { left: -100%; }
   50%  { left: 130%;  }
   100% { left: 130%;  }
 }
 
-@keyframes borderGlowPink {
-  0%, 100% {
-    box-shadow: 3px 4px 0px #090214, 0 0 20px rgba(255, 42, 133, 0.45), 0 0 50px rgba(255, 42, 133, 0.15);
-  }
-  50% {
-    box-shadow: 3px 4px 0px #090214, 0 0 32px rgba(255, 42, 133, 0.65), 0 0 65px rgba(255, 42, 133, 0.22);
-  }
-}
-
 .btn-back-criteria-pink:hover {
-  background: linear-gradient(135deg, #ff4797 0%, #FF2A85 50%, #ff6fb0 100%);
-  color: #fff;
-  transform: translateY(-3px) scale(1.03);
+  transform: translateY(-4px) scale(1.05);
   box-shadow:
-    4px 5px 0px #090214,
-    0 0 36px rgba(255, 42, 133, 0.70),
-    0 0 70px rgba(255, 42, 133, 0.25);
+    5px 6px 0px #090214,
+    0 0 40px rgba(255, 42, 133, 0.7),
+    0 0 75px rgba(255, 42, 133, 0.25);
 }
 
 .btn-back-criteria-pink:active {
   transform: translateY(0px) scale(0.98);
   box-shadow: 2px 2px 0px #090214, 0 0 14px rgba(255, 42, 133, 0.4);
-=======
-  padding: 28px 0 8px;
-}
-
-.btn-back-criteria-pink {
-  background: transparent;
-  color: var(--pink-neon);
-  border: 2px solid var(--pink-neon);
-  border-radius: 8px;
-  padding: 12px 28px;
-  font-size: 14px;
-  font-weight: 800;
-  font-family: var(--font-main);
-  cursor: pointer;
-  box-shadow: 0 0 12px rgba(255, 42, 133, 0.25);
-  transition: all 0.2s ease;
-  letter-spacing: 0.5px;
-}
-
-.btn-back-criteria-pink:hover {
-  background-color: var(--pink-neon);
-  color: #fff;
-  box-shadow: 3px 3px 0px #090214, 0 0 20px rgba(255, 42, 133, 0.5);
-  transform: translateY(-2px);
->>>>>>> 1150c5e853f0b8b4e78a830c7b851e6428defd88
 }
