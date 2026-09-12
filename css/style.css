@@ -1405,50 +1405,23 @@ h1, h2, h3, h4, .font-heading {
 }
 
 .btn-nav-back {
-  position: relative;
-  background: linear-gradient(135deg, #FF2A85 0%, #ff4797 45%, #FFC93C 100%);
-  border: 2.5px solid #090214;
-  border-radius: 8px;
-  padding: 11px 24px;
+  background-color: var(--pink-neon);
+  border: 2px solid #090214;
+  border-radius: 6px;
+  padding: 10px 22px;
   color: #FFFFFF;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 800;
   font-family: var(--font-main);
   cursor: pointer;
-  overflow: hidden;
-  box-shadow: 3px 3px 0px #090214, 0 0 18px rgba(255, 42, 133, 0.45);
-  transition: all 0.18s ease;
-}
-
-.btn-nav-back::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.25) 40%,
-    rgba(255, 255, 255, 0.5) 50%,
-    rgba(255, 255, 255, 0.25) 60%,
-    transparent 100%
-  );
-  transform: skewX(-20deg);
-  animation: shimmerSweepNavBack 2.6s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes shimmerSweepNavBack {
-  0%   { left: -100%; }
-  50%  { left: 130%;  }
-  100% { left: 130%;  }
+  box-shadow: 2px 2px 0px #090214, 0 0 14px rgba(255, 42, 133, 0.4);
+  transition: all 0.15s ease;
 }
 
 .btn-nav-back:hover {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 4px 4px 0px #090214, 0 0 26px rgba(255, 42, 133, 0.65);
+  background-color: #ff4797;
+  transform: translateY(-1px);
+  box-shadow: 3px 3px 0px #090214, 0 0 20px rgba(255, 42, 133, 0.65);
 }
 
 .arcade-joystick-widget {
