@@ -393,7 +393,7 @@ h1, h2, h3, h4, .font-heading {
   border: 1.5px solid var(--mint-accent);
   border-radius: 8px;
   display: grid;
-  margin: top: 12px;
+  margin-top: 12px;
   grid-template-columns: repeat(3, 1fr);
   padding: 12px 30px;
   width: 100%;
