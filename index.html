@@ -20,28 +20,37 @@
          HEADER / NAVBAR (MOCKUP)
          =================================================================== -->
     <header class="site-header">
-      <a href="#" class="header-brand-logo brand-home-trigger" title="3T Next Signal">
-        <img src="./img/Main Title.png" alt="3T Next Signal Logo" class="brand-logo-img">
+      <!-- Cụm Logo Đối Tác (Bên Trái) -->
+      <div class="header-partners-cluster">
+        <a href="https://www.facebook.com/itbclub.uel" target="_blank" rel="noopener noreferrer" class="header-partner-item">
+          <img src="./img/logoITB.png" alt="ITB Club Logo" class="header-partner-avatar">
+          <span class="header-partner-label">ITB</span>
+        </a>
+        <div class="header-partner-divider"></div>
+        <a href="https://www.facebook.com/thegioididongcom" target="_blank" rel="noopener noreferrer" class="header-partner-item">
+          <img src="./img/logoTGDĐ.jpg" alt="Thế Giới Di Động Logo" class="header-partner-avatar">
+          <span class="header-partner-label">Thế giới di động</span>
+        </a>
+      </div>
+
+      <!-- Main Title (Chính Giữa) -->
+      <a href="#" class="header-center-title brand-home-trigger" title="3T Next Signal">
+        <img src="./img/Main Title.png" alt="3T Next Signal Logo" class="header-title-img">
       </a>
 
-      <nav class="header-nav-menu">
+      <!-- Menu Điều Hướng (Bên Phải) -->
+      <nav class="header-nav-menu" id="main-nav-menu">
         <a href="#" class="nav-link active brand-home-trigger">Trang chủ</a>
-        <a href="https://www.facebook.com/itbclub.uel" target="_blank" class="nav-link">Về chúng tôi</a>
-        <button type="button" class="btn-header-start" id="btn-header-consult">
-          <span>BẮT ĐẦU</span>
-          <span class="arrow-box-sm">→</span>
-        </button>
+        <a href="https://www.facebook.com/itbclub.uel" target="_blank" rel="noopener noreferrer" class="nav-link">Về chúng tôi</a>
       </nav>
+
+      <button type="button" class="hamburger-menu-btn" id="hamburger-toggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </header>
 
-    <!-- DATA STATUS / FALLBACK NOTIFICATION BANNER -->
-    <div id="data-fallback-banner" class="data-fallback-banner hidden" role="status">
-      <div class="fallback-content">
-        <span class="fallback-icon">⚠️</span>
-        <span class="fallback-text"><strong>Thông báo dữ liệu:</strong> Đang sử dụng nguồn dữ liệu dự phòng (Mock Fallback) do không thể tải file <code>data/laptop_file.json</code> trực tiếp. Hệ thống tư vấn và chấm điểm vẫn hoạt động đầy đủ!</span>
-      </div>
-      <button type="button" class="btn-close-banner" onclick="document.getElementById('data-fallback-banner').classList.add('hidden')" title="Đóng thông báo">✕</button>
-    </div>
 
     <!-- ===================================================================
          VIEW 1: HOME PAGE (BÁM SÁT 100% ẢNH MOCKUP MỚI NHẤT)
@@ -74,22 +83,6 @@
                 <span class="arrow-box-badge">→</span>
               </button>
             </div>
-
-            <!-- Hero Stats Box inside Hero Left -->
-            <div class="hero-stats-banner">
-              <div class="stat-item-block">
-                <div class="stat-number-yellow">800+</div>
-                <div class="stat-label-white">LƯỢT THAM GIA</div>
-              </div>
-              <div class="stat-item-block">
-                <div class="stat-number-yellow">60K+</div>
-                <div class="stat-label-white">LƯỢT TIẾP CẬN</div>
-              </div>
-              <div class="stat-item-block">
-                <div class="stat-number-yellow">12+</div>
-                <div class="stat-label-white">ĐỐI TÁC ĐỒNG HÀNH</div>
-              </div>
-            </div>
           </div>
 
           <!-- Right Column (Arcade Claw Machine & Mascot Banner from img/Có_Elements-removebg.png) -->
@@ -97,10 +90,26 @@
             <div class="hero-image-wrapper">
               <div class="floating-sparkle-top">✦</div>
               <div class="floating-sticker sticker-yellow">GOOD<br>SIGNAL!</div>
-              <img src="./img/Có_Elements-removebg.png" alt="3T Next Signal Arcade & Mascot" class="hero-3d-graphic hero-banner-art" onerror="this.src='./assets/hero-arcade.jpg'" />
+              <img src="./img/Có_Elements-removebg.png" alt="3T Next Signal Arcade & Mascot" class="hero-3d-graphic hero-banner-art" />
               <div class="floating-sticker sticker-teal">FREE<br>FOR STUDENTS</div>
               <div class="sticker-press-start">● PRESS START</div>
             </div>
+          </div>
+        </div>
+
+        <!-- Hero Stats Box (below the 2-column layout) -->
+        <div class="hero-stats-banner">
+          <div class="stat-item-block">
+            <div class="stat-number-yellow">800+</div>
+            <div class="stat-label-white">LƯỢT THAM GIA</div>
+          </div>
+          <div class="stat-item-block">
+            <div class="stat-number-yellow">60K+</div>
+            <div class="stat-label-white">LƯỢT TIẾP CẬN</div>
+          </div>
+          <div class="stat-item-block">
+            <div class="stat-number-yellow">12+</div>
+            <div class="stat-label-white">ĐỐI TÁC ĐỒNG HÀNH</div>
           </div>
         </div>
 
@@ -218,6 +227,34 @@
           </div>
         </div>
 
+      </div>
+
+      <!-- 5. Section: ĐỐI TÁC ĐỒNG HÀNH -->
+      <div class="partners-companion-card" id="partners-companion-section">
+        <div class="partner-card-header">
+          <span class="partner-tag-slash">//</span>
+          <h2 class="partner-heading-text">ĐỐI TÁC ĐỒNG HÀNH</h2>
+        </div>
+
+        <div class="partner-deco-line"></div>
+
+        <div class="partner-logos-cluster">
+          <!-- Partner 1: ITB -->
+          <a href="https://www.facebook.com/itbclub.uel" target="_blank" rel="noopener noreferrer" class="partner-unit-item">
+            <div class="partner-avatar-wrapper">
+              <img src="./img/logoITB.png" alt="ITB Club" class="partner-avatar-img">
+            </div>
+            <span class="partner-name-label">ITB</span>
+          </a>
+
+          <!-- Partner 2: Thế Giới Di Động -->
+          <a href="https://www.facebook.com/thegioididongcom" target="_blank" rel="noopener noreferrer" class="partner-unit-item">
+            <div class="partner-avatar-wrapper">
+              <img src="./img/logoTGDĐ.jpg" alt="Thế Giới Di Động" class="partner-avatar-img">
+            </div>
+            <span class="partner-name-label">Thế giới di động</span>
+          </a>
+        </div>
       </div>
 
     </section>
@@ -558,7 +595,7 @@
       <!-- Bottom Tip Callout (Mockup 5) -->
       <div class="results-bottom-callout-row">
         <div class="tip-yellow-callout">
-          <strong>TIP!</strong> Nếu chưa thấy máy phù hợp, hãy nhấp vào ô <a href="https://www.facebook.com/itbclub.uel" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; font-weight: 900;">Tư vấn thêm</a> để được hỗ trợ nhé!
+          <strong>TIP!</strong> Nếu chưa thấy máy phù hợp, hãy nhấp vào ô <a href="https://www.facebook.com/thegioididongcom" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; font-weight: 900;">Tư vấn thêm</a> để được hỗ trợ nhé!
         </div>
       </div>
 
@@ -604,7 +641,7 @@
         <div class="footer-social-links">
           <a href="https://www.facebook.com/itbclub.uel" target="_blank" rel="noopener noreferrer">Fanpage ITB CLUB</a>
           <a href="https://vn.linkedin.com/company/itbclub" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="#" target="_blank" rel="noopener noreferrer">3T - Tất tần tật máy tính</a>
+          <a href="https://web.facebook.com/itbclub.uel/posts/pfbid0h12AS57tdWSm3Qwe5HcD79utmp8pcYEDTV7Jjzwo7qCDRGJ2rZyXujrmtV1hVUstl?rdid=NkRL0GQ9MDIXAZYu#" target="_blank" rel="noopener noreferrer">3T - Tất tần tật máy tính</a>
         </div>
       </div>
 

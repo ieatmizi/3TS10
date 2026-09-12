@@ -7,221 +7,11 @@
  * 3. Tích hợp sẵn Bộ Test Cases Tự Động (Test Suite) phục vụ kiểm thử 8 kịch bản từ tài liệu đặc tả.
  */
 
-/**
- * DANH SÁCH LAPTOP DỰ PHÒNG (MOCK FALLBACK)
- * Được kích hoạt tự động nếu quá trình tải laptop_file.json gặp lỗi (CORS / 404 / mở qua file://)
- * Đảm bảo đầy đủ các hệ điều hành, phân khúc giá và cấu hình.
- */
-const MOCK_LAPTOPS = [
-  {
-    id: 'mock-1',
-    name: 'ASUS Vivobook 15 X1504VA',
-    brand: 'Asus',
-    os: 'Windows',
-    price: 13990000,
-    ramGB: 16,
-    ssdGB: 512,
-    cpu: 'Intel Core i5 1335U',
-    cpuTier: 3,
-    gpu: 'Intel Iris Xe Graphics (tích hợp)',
-    gpuTier: 2,
-    isDedicatedGpu: false,
-    batteryHours: 42,
-    weightKg: 1.7,
-    display: '15.6 inch FHD',
-    displayTier: 2,
-    image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&auto=format&fit=crop&q=80',
-    productUrl: 'https://cellphones.com.vn'
-  },
-  {
-    id: 'mock-2',
-    name: 'Lenovo IdeaPad Slim 3 14IAH8',
-    brand: 'Lenovo',
-    os: 'Windows',
-    price: 12490000,
-    ramGB: 16,
-    ssdGB: 512,
-    cpu: 'Intel Core i5 12450H',
-    cpuTier: 3,
-    gpu: 'Intel UHD Graphics',
-    gpuTier: 1,
-    isDedicatedGpu: false,
-    batteryHours: 47,
-    weightKg: 1.43,
-    display: '14.0 inch FHD',
-    displayTier: 2,
-    image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&auto=format&fit=crop&q=80',
-    productUrl: 'https://fptshop.com.vn'
-  },
-  {
-    id: 'mock-3',
-    name: 'Acer Nitro V 15 ANV15',
-    brand: 'Acer',
-    os: 'Windows',
-    price: 19290000,
-    ramGB: 16,
-    ssdGB: 512,
-    cpu: 'Intel Core i5 13420H',
-    cpuTier: 3,
-    gpu: 'NVIDIA GeForce RTX 4050 6GB',
-    gpuTier: 4,
-    isDedicatedGpu: true,
-    batteryHours: 57,
-    weightKg: 2.1,
-    display: '15.6 inch 144Hz',
-    displayTier: 3,
-    image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&auto=format&fit=crop&q=80',
-    productUrl: 'https://cellphones.com.vn'
-  },
-  {
-    id: 'mock-4',
-    name: 'ASUS Vivobook S 14 OLED S5406MA',
-    brand: 'Asus',
-    os: 'Windows',
-    price: 24490000,
-    ramGB: 16,
-    ssdGB: 512,
-    cpu: 'Intel Core Ultra 5 125H',
-    cpuTier: 3,
-    gpu: 'Intel Arc Graphics (tích hợp)',
-    gpuTier: 2,
-    isDedicatedGpu: false,
-    batteryHours: 75,
-    weightKg: 1.3,
-    display: '14.0 inch 3K OLED 120Hz',
-    displayTier: 4,
-    image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&auto=format&fit=crop&q=80',
-    productUrl: 'https://cellphones.com.vn'
-  },
-  {
-    id: 'mock-5',
-    name: 'Apple MacBook Air M1 13 inch',
-    brand: 'Apple',
-    os: 'macOS',
-    price: 15990000,
-    ramGB: 8,
-    ssdGB: 256,
-    cpu: 'Apple M1 8-Core',
-    cpuTier: 3,
-    gpu: 'Apple M1 7-Core GPU',
-    gpuTier: 2,
-    isDedicatedGpu: false,
-    batteryHours: 49.9,
-    weightKg: 1.29,
-    display: '13.3 inch Retina',
-    displayTier: 4,
-    image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&auto=format&fit=crop&q=80',
-    productUrl: 'https://cellphones.com.vn'
-  },
-  {
-    id: 'mock-6',
-    name: 'Lenovo Yoga Slim 7 14IMH9',
-    brand: 'Lenovo',
-    os: 'Windows',
-    price: 28990000,
-    ramGB: 32,
-    ssdGB: 1024,
-    cpu: 'Intel Core Ultra 7 155H',
-    cpuTier: 4,
-    gpu: 'Intel Arc Graphics (tích hợp)',
-    gpuTier: 2,
-    isDedicatedGpu: false,
-    batteryHours: 65,
-    weightKg: 1.39,
-    display: '14.0 inch 2.8K OLED 120Hz',
-    displayTier: 4,
-    image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&auto=format&fit=crop&q=80',
-    productUrl: 'https://fptshop.com.vn'
-  },
-  {
-    id: 'mock-7',
-    name: 'Apple MacBook Air M2 13 inch',
-    brand: 'Apple',
-    os: 'macOS',
-    price: 26490000,
-    ramGB: 16,
-    ssdGB: 512,
-    cpu: 'Apple M2 8-Core',
-    cpuTier: 3,
-    gpu: 'Apple M2 10-Core GPU',
-    gpuTier: 2,
-    isDedicatedGpu: false,
-    batteryHours: 52.6,
-    weightKg: 1.24,
-    display: '13.6 inch Liquid Retina',
-    displayTier: 4,
-    image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&auto=format&fit=crop&q=80',
-    productUrl: 'https://cellphones.com.vn'
-  },
-  {
-    id: 'mock-8',
-    name: 'ASUS ROG Zephyrus G16 GU605',
-    brand: 'Asus',
-    os: 'Windows',
-    price: 54990000,
-    ramGB: 32,
-    ssdGB: 1024,
-    cpu: 'Intel Core Ultra 9 185H',
-    cpuTier: 5,
-    gpu: 'NVIDIA GeForce RTX 4070 8GB',
-    gpuTier: 5,
-    isDedicatedGpu: true,
-    batteryHours: 90,
-    weightKg: 1.85,
-    display: '16.0 inch 2.5K OLED 240Hz',
-    displayTier: 5,
-    image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&auto=format&fit=crop&q=80',
-    productUrl: 'https://cellphones.com.vn'
-  },
-  {
-    id: 'mock-9',
-    name: 'Apple MacBook Pro 14 inch M3 Pro',
-    brand: 'Apple',
-    os: 'macOS',
-    price: 49990000,
-    ramGB: 18,
-    ssdGB: 512,
-    cpu: 'Apple M3 Pro 11-Core',
-    cpuTier: 5,
-    gpu: 'Apple M3 Pro 14-Core GPU',
-    gpuTier: 4,
-    isDedicatedGpu: false,
-    batteryHours: 70,
-    weightKg: 1.61,
-    display: '14.2 inch Liquid Retina XDR',
-    displayTier: 5,
-    image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&auto=format&fit=crop&q=80',
-    productUrl: 'https://cellphones.com.vn'
-  },
-  {
-    id: 'mock-10',
-    name: 'Acer Predator Helios Neo 16',
-    brand: 'Acer',
-    os: 'Windows',
-    price: 32990000,
-    ramGB: 16,
-    ssdGB: 512,
-    cpu: 'Intel Core i7 14700HX',
-    cpuTier: 4,
-    gpu: 'NVIDIA GeForce RTX 4060 8GB',
-    gpuTier: 4,
-    isDedicatedGpu: true,
-    batteryHours: 90,
-    weightKg: 2.6,
-    display: '16.0 inch 2K 165Hz',
-    displayTier: 3,
-    image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&auto=format&fit=crop&q=80',
-    productUrl: 'https://fptshop.com.vn'
-  }
-];
-
 let cachedLaptops = [];
 let questionnaire = null;
 
 async function initApp() {
   console.log('[3T Laptop Advisor] Đang khởi tạo ứng dụng...');
-
-  const fallbackBanner = document.getElementById('data-fallback-banner');
 
   try {
     // 1. Nạp và chuẩn hóa dữ liệu laptop từ file JSON tĩnh
@@ -231,12 +21,8 @@ async function initApp() {
     }
     cachedLaptops = loadedList;
     console.log(`[3T Laptop Advisor] Đã nạp thành công ${cachedLaptops.length} laptop từ file JSON.`);
-    if (fallbackBanner) fallbackBanner.classList.add('hidden');
   } catch (err) {
-    console.warn('[3T Laptop Advisor] Không thể tải file laptop_file.json (offline / CORS / file://), kích hoạt MOCK_LAPTOPS dự phòng...', err);
-    // Gán thực sự mảng Mock Fallback để hệ thống tiếp tục hoạt động
-    cachedLaptops = MOCK_LAPTOPS;
-    if (fallbackBanner) fallbackBanner.classList.remove('hidden');
+    console.error('[3T Laptop Advisor] Lỗi khi tải file laptop_file.json:', err);
   }
 
   // 2. Khởi tạo Questionnaire UI Controller
@@ -246,11 +32,11 @@ async function initApp() {
   window.questionnaire = questionnaire;
   window.cachedLaptops = cachedLaptops;
 
-  // Gắn sự kiện cho nút floating "Tư vấn thêm" -> dẫn đến Fanpage ITB Club trên Facebook
+  // Gắn sự kiện cho nút floating "Tư vấn thêm" -> dẫn đến Fanpage Thế Giới Di Động trên Facebook
   const btnFloatingConsult = document.getElementById('btn-floating-consult');
   if (btnFloatingConsult) {
     btnFloatingConsult.addEventListener('click', () => {
-      window.open('https://www.facebook.com/itbclub.uel', '_blank', 'noopener,noreferrer');
+      window.open('https://www.facebook.com/thegioididongcom', '_blank', 'noopener,noreferrer');
     });
   }
 }
@@ -295,18 +81,7 @@ function handleQuestionnaireCompleted(userAnswers) {
 async function runAllLaptopTests() {
   console.group('🧪 BẮT ĐẦU CHẠY 8 TEST CASES KIỂM THỬ HỆ THỐNG TƯ VẤN LAPTOP');
 
-  let laptops = cachedLaptops;
-  if (!laptops || laptops.length === 0) {
-    try {
-      laptops = await window.LaptopAPI.fetchLaptops();
-    } catch (e) {
-      laptops = MOCK_LAPTOPS;
-    }
-  }
-  if (!laptops || laptops.length === 0) {
-    laptops = MOCK_LAPTOPS;
-  }
-
+  const laptops = cachedLaptops.length > 0 ? cachedLaptops : await window.LaptopAPI.fetchLaptops();
   const resultsSummary = [];
 
   function assert(testName, condition, detail) {
@@ -489,4 +264,22 @@ async function runAllLaptopTests() {
 document.addEventListener('DOMContentLoaded', () => {
   initApp();
   window.runAllLaptopTests = runAllLaptopTests;
+
+  // --- Hamburger Mobile Menu Toggle ---
+  const hamburgerBtn = document.getElementById('hamburger-toggle');
+  const navMenu = document.getElementById('main-nav-menu');
+  if (hamburgerBtn && navMenu) {
+    hamburgerBtn.addEventListener('click', () => {
+      hamburgerBtn.classList.toggle('active');
+      navMenu.classList.toggle('mobile-open');
+    });
+
+    // Close menu when a nav link or CTA button is clicked
+    navMenu.querySelectorAll('.nav-link, .btn-header-start').forEach(el => {
+      el.addEventListener('click', () => {
+        hamburgerBtn.classList.remove('active');
+        navMenu.classList.remove('mobile-open');
+      });
+    });
+  }
 });

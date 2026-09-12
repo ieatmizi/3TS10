@@ -43,8 +43,9 @@ function createLaptopCardHTML(laptop, rankIndex) {
 
       <div class="laptop-img-wrapper">
         <div class="retro-laptop-frame">
-          <img src="${laptop.image}" alt="${laptop.name}" class="laptop-thumbnail" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&auto=format&fit=crop&q=80'" />
-          <div class="screen-watermark">3T</div>
+          <img src="${laptop.image || './img/laptop-default.jpg'}" alt="${laptop.name}" class="laptop-thumbnail" loading="lazy" onerror="this.src='./img/laptop-default.jpg
+          '" />
+          <div class="screen-watermark"></div>
         </div>
       </div>
 
@@ -80,7 +81,7 @@ function createLaptopCardHTML(laptop, rankIndex) {
           </tr>
           <tr>
             <td class="spec-label">PIN / CÂN NẶNG</td>
-            <td class="spec-value">~${laptop.batteryHours} giờ | ${laptop.weightKg}kg</td>
+            <td class="spec-value">${laptop.batteryWhr} Wh | ${laptop.weightKg}kg</td>
           </tr>
         </tbody>
       </table>

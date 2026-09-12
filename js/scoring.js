@@ -71,7 +71,7 @@ function calculateNormalizedScores(laptop, requirements, budgetKey) {
     cpuTier: 2,
     gpuTier: 1,
     ssdGB: 512,
-    batteryHours: 50,
+    batteryWhr: 50,
     weightKg: 2.0,
     displayTier: 2
   };
@@ -92,9 +92,9 @@ function calculateNormalizedScores(laptop, requirements, budgetKey) {
   const reqGPUTier = req.gpuTier || 1;
   const gpuScore = Math.min(100, Math.round((tierToScore(laptop.gpuTier) / tierToScore(reqGPUTier)) * 100));
 
-  // Battery Score: min(100, actualBatteryHours / requiredBatteryHours * 100)
-  const reqBattery = req.batteryHours || 50;
-  const batteryScore = Math.min(100, Math.round((laptop.batteryHours / reqBattery) * 100));
+  // Battery Score (Wh): min(100, actualBatteryWhr / requiredBatteryWhr * 100)
+  const reqBattery = req.batteryWhr || 50;
+  const batteryScore = Math.min(100, Math.round((laptop.batteryWhr / reqBattery) * 100));
 
   // Weight Score: min(100, requiredWeight / actualWeight * 100) - Máy càng nhẹ càng tốt
   const reqWeight = req.weightKg || 2.0;
@@ -180,9 +180,9 @@ function generateExplanations(laptop, requirements) {
     }
   }
 
-  // Battery & Weight
-  if (laptop.batteryHours >= 70 || laptop.weightKg <= 1.5) {
-    explanations.push(`Thời lượng pin ~${laptop.batteryHours}h & trọng lượng nhẹ (${laptop.weightKg}kg) tiện mang lên giảng đường`);
+  // Battery (Wh) & Weight
+  if (laptop.batteryWhr >= 70 || laptop.weightKg <= 1.5) {
+    explanations.push(`Dung lượng pin ${laptop.batteryWhr} Wh & trọng lượng nhẹ (${laptop.weightKg}kg) tiện mang lên giảng đường`);
   }
 
   // Display

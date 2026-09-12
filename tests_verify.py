@@ -25,16 +25,25 @@ def parse_ssd(v):
     m_gb = SSD_GB_REGEX.search(str(v))
     return int(m_gb.group(1)) if m_gb else (int(v) if str(v).isdigit() else 512)
 
+def parse_safe_float(v, default=0.0):
+    if v is None: return default
+    if isinstance(v, (int, float)): return float(v)
+    s = str(v).replace(',', '.').strip()
+    try:
+        return float(s)
+    except:
+        return default
+
 laptops = []
 for item in raw_list:
     name = item.get('name') or 'Laptop'
     is_apple = (item.get('brand_name') and item.get('brand_name').lower() == 'apple') or ('macbook' in name.lower()) or ('apple' in name.lower())
     os_name = item.get('os') or ('macOS' if is_apple else 'Windows')
-    price = float(item.get('price_vnd') or item.get('price') or 0)
+    price = parse_safe_float(item.get('price_vnd') or item.get('price'), 0.0)
     ram = parse_ram(item.get('ram') or item.get('ramGB'))
     ssd = parse_ssd(item.get('ssd') or item.get('ssdGB'))
-    battery = float(item.get('battery_capacity_whr') or item.get('batteryHours') or 50)
-    weight = float(item.get('laptop_weight') or item.get('weightKg') or 1.8)
+    battery = parse_safe_float(item.get('battery_capacity_whr') or item.get('batteryHours'), 50.0)
+    weight = parse_safe_float(item.get('laptop_weight') or item.get('weightKg'), 1.8)
     laptops.append({
         'name': name,
         'os': os_name,

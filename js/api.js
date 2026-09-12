@@ -49,6 +49,17 @@ function parseSSD(ssdValue) {
 }
 
 /**
+ * Chuyển đổi an toàn chuỗi số (hỗ trợ cả dấu phẩy 54,8 và dấu chấm 54.8) sang float
+ */
+function parseSafeFloat(val, defaultVal = 0) {
+  if (typeof val === 'number') return isNaN(val) ? defaultVal : val;
+  if (!val) return defaultVal;
+  const cleaned = String(val).replace(',', '.').replace(/[^0-9.]/g, '');
+  const parsed = parseFloat(cleaned);
+  return isNaN(parsed) ? defaultVal : parsed;
+}
+
+/**
  * Parse một bản ghi JSON thô thành đối tượng trung gian tương thích với normalizeLaptopData
  * @param {Object} raw - Bản ghi từ file JSON tĩnh
  * @returns {Object} rawLaptop tương thích schema
@@ -64,18 +75,27 @@ function parseRawLaptopRecord(raw) {
   const ramGB = parseRAM(raw.ram !== undefined && raw.ram !== null ? raw.ram : raw.ramGB);
   const ssdGB = parseSSD(raw.ssd !== undefined && raw.ssd !== null ? raw.ssd : raw.ssdGB);
 
-  // Đơn vị pin là Wh trực tiếp (lấy thẳng battery_capacity_whr gán vào batteryHours)
-  const batteryHours = (raw.battery_capacity_whr !== undefined && raw.battery_capacity_whr !== null)
-    ? Number(raw.battery_capacity_whr) 
-    : Number(raw.batteryHours || raw.battery || 50);
+  // Dung lượng pin (Wh) – hỗ trợ chuỗi có dấu phẩy
+  const batteryWhr = parseSafeFloat(
+    raw.battery_capacity_whr !== undefined && raw.battery_capacity_whr !== null 
+      ? raw.battery_capacity_whr 
+      : (raw.batteryWhr || raw.batteryHours || raw.battery), 
+    50
+  );
 
-  const weightKg = (raw.laptop_weight !== undefined && raw.laptop_weight !== null)
-    ? Number(raw.laptop_weight) 
-    : Number(raw.weightKg || raw.weight || 1.8);
+  const weightKg = parseSafeFloat(
+    raw.laptop_weight !== undefined && raw.laptop_weight !== null 
+      ? raw.laptop_weight 
+      : (raw.weightKg || raw.weight), 
+    1.8
+  );
 
-  const price = (raw.price_vnd !== undefined && raw.price_vnd !== null)
-    ? Number(raw.price_vnd) 
-    : Number(raw.price || 0);
+  const price = parseSafeFloat(
+    raw.price_vnd !== undefined && raw.price_vnd !== null 
+      ? raw.price_vnd 
+      : (raw.price), 
+    0
+  );
 
   const display = raw.screen_size 
     ? `${raw.screen_size} inch` 
@@ -90,7 +110,7 @@ function parseRawLaptopRecord(raw) {
     gpu: raw.gpu_name || raw.gpu || raw.graphics || '',
     ramGB: ramGB,
     ssdGB: ssdGB,
-    batteryHours: batteryHours,
+    batteryWhr: batteryWhr,
     weightKg: weightKg,
     price: price,
     display: display,
@@ -154,7 +174,7 @@ function normalizeLaptopData(rawLaptop) {
   const ramGB = Number(rawLaptop.ramGB || rawLaptop.memory || rawLaptop.ram || 8);
   const ssdGB = Number(rawLaptop.ssdGB || rawLaptop.storage || rawLaptop.ssd || 512);
   const price = Number(rawLaptop.price || 0);
-  const batteryHours = Number(rawLaptop.batteryHours || rawLaptop.battery || 50);
+  const batteryWhr = Number(rawLaptop.batteryWhr || rawLaptop.batteryHours || rawLaptop.battery || 50);
   const weightKg = Number(rawLaptop.weightKg || rawLaptop.weight || 1.8);
   
   const cpuTier = normalizeCPU(rawLaptop.cpu || rawLaptop.processor, rawLaptop.cpuTier);
@@ -173,11 +193,11 @@ function normalizeLaptopData(rawLaptop) {
     gpu: rawLaptop.gpu || rawLaptop.graphics || (gpuTier > 2 ? 'Card đồ họa rời' : 'Card đồ họa tích hợp'),
     gpuTier: gpuTier,
     isDedicatedGpu: gpuTier >= 3,
-    batteryHours: batteryHours,
+    batteryWhr: batteryWhr,
     weightKg: weightKg,
     display: rawLaptop.display || rawLaptop.screen || `Màn hình Tier ${displayTier}`,
     displayTier: displayTier,
-    image: rawLaptop.image || rawLaptop.imageUrl || './assets/images/laptop-default.png',
+    image: rawLaptop.image || rawLaptop.imageUrl || './img/laptop-default.jpg',
     productUrl: rawLaptop.productUrl || rawLaptop.url || rawLaptop.link || '#'
   };
 }

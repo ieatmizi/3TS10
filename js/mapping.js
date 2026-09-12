@@ -22,7 +22,7 @@ const INDUSTRY_CONFIG = {
       gpuTier: 1,
       ssdGB: 512,
       displayTier: 2,
-      batteryHours: 50,
+      batteryWhr: 50,
       weightKg: 2.0
     }
   },
@@ -41,7 +41,7 @@ const INDUSTRY_CONFIG = {
       gpuTier: 1,
       ssdGB: 512,
       displayTier: 2,
-      batteryHours: 50,
+      batteryWhr: 50,
       weightKg: 2.0
     }
   },
@@ -58,7 +58,7 @@ const INDUSTRY_CONFIG = {
       gpuTier: 3,
       ssdGB: 512,
       displayTier: 4,
-      batteryHours: 50,
+      batteryWhr: 50,
       weightKg: 2.2
     }
   },
@@ -75,7 +75,7 @@ const INDUSTRY_CONFIG = {
       gpuTier: 2,
       ssdGB: 512,
       displayTier: 3,
-      batteryHours: 50,
+      batteryWhr: 50,
       weightKg: 2.0
     }
   },
@@ -89,7 +89,7 @@ const INDUSTRY_CONFIG = {
       gpuTier: 1,
       ssdGB: 512,
       displayTier: 2,
-      batteryHours: 50,
+      batteryWhr: 50,
       weightKg: 2.0
     }
   }
@@ -105,7 +105,7 @@ const PURPOSE_CONFIG = {
       gpuTier: 1,
       ssdGB: 512,
       displayTier: 2,
-      batteryHours: 50,
+      batteryWhr: 50,
       weightKg: 2.0
     }
   },
@@ -118,7 +118,7 @@ const PURPOSE_CONFIG = {
       gpuTier: 1,
       ssdGB: 512,
       displayTier: 2,
-      batteryHours: 50,
+      batteryWhr: 50,
       weightKg: 2.0
     }
   },
@@ -131,7 +131,7 @@ const PURPOSE_CONFIG = {
       gpuTier: 4,
       ssdGB: 1024,
       displayTier: 4,
-      batteryHours: 55,
+      batteryWhr: 55,
       weightKg: 2.2
     }
   },
@@ -144,7 +144,7 @@ const PURPOSE_CONFIG = {
       gpuTier: 4,
       ssdGB: 1024,
       displayTier: 3,
-      batteryHours: 45,
+      batteryWhr: 45,
       weightKg: 2.3
     }
   }
@@ -240,7 +240,7 @@ function mergeMaxRequirements(reqA, reqB) {
     gpuTier: Math.max(reqA.gpuTier || 1, reqB.gpuTier || 1),
     ssdGB: Math.max(reqA.ssdGB || 256, reqB.ssdGB || 256),
     displayTier: Math.max(reqA.displayTier || 1, reqB.displayTier || 1),
-    batteryHours: Math.max(reqA.batteryHours || 50, reqB.batteryHours || 50),
+    batteryWhr: Math.max(reqA.batteryWhr || 50, reqB.batteryWhr || 50),
     weightKg: Math.max(reqA.weightKg || 2.0, reqB.weightKg || 2.0)
   };
 }
@@ -313,7 +313,7 @@ function buildRequirementsForKnownBranch(answers) {
       if (item === 'ssd_512') finalReq.ssdGB = Math.max(finalReq.ssdGB, 512);
       if (item === 'ssd_1024') finalReq.ssdGB = Math.max(finalReq.ssdGB, 1024);
       if (item === 'gpu_dedicated') finalReq.gpuTier = Math.max(finalReq.gpuTier, 3); // Cần Card đồ họa rời (Tier >= 3)
-      if (item === 'battery_10h') finalReq.batteryHours = Math.max(finalReq.batteryHours, 70);
+      if (item === 'battery_10h') finalReq.batteryWhr = Math.max(finalReq.batteryWhr, 70);
     }
   }
 
