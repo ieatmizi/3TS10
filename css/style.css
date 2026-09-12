@@ -3059,3 +3059,73 @@ h1, h2, h3, h4, .font-heading {
     transform: none;
   }
 }
+
+
+/* =============================================
+   FLOATING "TƯ VẤN THÊM" BUTTON (Fixed Bottom-Right)
+   ============================================= */
+.btn-consult-floating-fixed {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  background: linear-gradient(135deg, var(--pink-neon), #ff4797);
+  color: #fff;
+  border: 2px solid #090214;
+  border-radius: 50px;
+  padding: 14px 26px;
+  font-size: 14px;
+  font-weight: 800;
+  font-family: var(--font-main);
+  cursor: pointer;
+  box-shadow: 3px 3px 0px #090214, 0 0 20px rgba(255, 42, 133, 0.5);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  animation: floatPulse 2.5s ease-in-out infinite;
+}
+
+.btn-consult-floating-fixed:hover {
+  background: linear-gradient(135deg, #ff4797, var(--pink-neon));
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 4px 4px 0px #090214, 0 0 30px rgba(255, 42, 133, 0.7);
+}
+
+@keyframes floatPulse {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+
+/* =============================================
+   NÚT "QUAY LẠI CHỈNH TIÊU CHÍ" (Trang kết quả)
+   ============================================= */
+.back-to-criteria-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 28px 0 8px;
+}
+
+.btn-back-criteria-pink {
+  background: transparent;
+  color: var(--pink-neon);
+  border: 2px solid var(--pink-neon);
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 800;
+  font-family: var(--font-main);
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(255, 42, 133, 0.25);
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
+}
+
+.btn-back-criteria-pink:hover {
+  background-color: var(--pink-neon);
+  color: #fff;
+  box-shadow: 3px 3px 0px #090214, 0 0 20px rgba(255, 42, 133, 0.5);
+  transform: translateY(-2px);
+}
