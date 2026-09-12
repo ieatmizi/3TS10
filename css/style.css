@@ -3063,13 +3063,17 @@ h1, h2, h3, h4, .font-heading {
 
 /* =============================================
    FLOATING "TƯ VẤN THÊM" BUTTON (Fixed Bottom-Right)
+<<<<<<< HEAD
    — Mint/Cyan neon with ring-pulse
+=======
+>>>>>>> 1150c5e853f0b8b4e78a830c7b851e6428defd88
    ============================================= */
 .btn-consult-floating-fixed {
   position: fixed;
   bottom: 28px;
   right: 28px;
   z-index: 9999;
+<<<<<<< HEAD
   background: linear-gradient(135deg, #00D4AA 0%, var(--mint-accent) 50%, #40FFE0 100%);
   color: #090214;
   border: 2.5px solid #090214;
@@ -3129,21 +3133,53 @@ h1, h2, h3, h4, .font-heading {
     4px 5px 0px #090214,
     0 0 36px rgba(0, 245, 212, 0.70),
     0 0 80px rgba(0, 245, 212, 0.22);
+=======
+  background: linear-gradient(135deg, var(--pink-neon), #ff4797);
+  color: #fff;
+  border: 2px solid #090214;
+  border-radius: 50px;
+  padding: 14px 26px;
+  font-size: 14px;
+  font-weight: 800;
+  font-family: var(--font-main);
+  cursor: pointer;
+  box-shadow: 3px 3px 0px #090214, 0 0 20px rgba(255, 42, 133, 0.5);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  animation: floatPulse 2.5s ease-in-out infinite;
+}
+
+.btn-consult-floating-fixed:hover {
+  background: linear-gradient(135deg, #ff4797, var(--pink-neon));
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 4px 4px 0px #090214, 0 0 30px rgba(255, 42, 133, 0.7);
+>>>>>>> 1150c5e853f0b8b4e78a830c7b851e6428defd88
 }
 
 @keyframes floatPulse {
   0%, 100% { transform: translateY(0); }
+<<<<<<< HEAD
   50% { transform: translateY(-6px); }
+=======
+  50% { transform: translateY(-5px); }
+>>>>>>> 1150c5e853f0b8b4e78a830c7b851e6428defd88
 }
 
 
 /* =============================================
    NÚT "QUAY LẠI CHỈNH TIÊU CHÍ" (Trang kết quả)
+<<<<<<< HEAD
    — Yellow/Gold solid gradient, shimmer sweep
+=======
+>>>>>>> 1150c5e853f0b8b4e78a830c7b851e6428defd88
    ============================================= */
 .back-to-criteria-wrapper {
   display: flex;
   justify-content: center;
+<<<<<<< HEAD
   padding: 32px 0 12px;
 }
 
@@ -3217,4 +3253,29 @@ h1, h2, h3, h4, .font-heading {
 .btn-back-criteria-pink:active {
   transform: translateY(0px) scale(0.98);
   box-shadow: 2px 2px 0px #090214, 0 0 14px rgba(255, 42, 133, 0.4);
+=======
+  padding: 28px 0 8px;
+}
+
+.btn-back-criteria-pink {
+  background: transparent;
+  color: var(--pink-neon);
+  border: 2px solid var(--pink-neon);
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 800;
+  font-family: var(--font-main);
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(255, 42, 133, 0.25);
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
+}
+
+.btn-back-criteria-pink:hover {
+  background-color: var(--pink-neon);
+  color: #fff;
+  box-shadow: 3px 3px 0px #090214, 0 0 20px rgba(255, 42, 133, 0.5);
+  transform: translateY(-2px);
+>>>>>>> 1150c5e853f0b8b4e78a830c7b851e6428defd88
 }
