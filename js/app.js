@@ -32,13 +32,8 @@ async function initApp() {
   window.questionnaire = questionnaire;
   window.cachedLaptops = cachedLaptops;
 
-  // Gắn sự kiện cho nút floating "Tư vấn thêm" -> dẫn đến Fanpage Thế Giới Di Động trên Facebook
-  const btnFloatingConsult = document.getElementById('btn-floating-consult');
-  if (btnFloatingConsult) {
-    btnFloatingConsult.addEventListener('click', () => {
-      window.open('https://www.facebook.com/thegioididongcom', '_blank', 'noopener,noreferrer');
-    });
-  }
+  // Nút floating "Tư vấn thêm" đã chuyển sang thẻ <a> với href Zalo trực tiếp trong HTML
+  // Không cần gắn sự kiện click nữa.
 }
 
 /**
