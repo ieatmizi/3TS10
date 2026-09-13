@@ -1410,21 +1410,23 @@ h1, h2, h3, h4, .font-heading {
 }
 
 .btn-nav-back {
-  background-color: transparent;
-  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  background-color: var(--pink-neon);
+  border: 2px solid #090214;
   border-radius: 6px;
-  padding: 9px 18px;
+  padding: 10px 22px;
   color: #FFFFFF;
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 13.5px;
+  font-weight: 800;
   font-family: var(--font-main);
   cursor: pointer;
+  box-shadow: 2px 2px 0px #090214, 0 0 14px rgba(255, 42, 133, 0.4);
   transition: all 0.15s ease;
 }
 
 .btn-nav-back:hover {
-  border-color: #FFFFFF;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #ff4797;
+  transform: translateY(-1px);
+  box-shadow: 3px 3px 0px #090214, 0 0 20px rgba(255, 42, 133, 0.65);
 }
 
 .arcade-joystick-widget {
@@ -3171,26 +3173,26 @@ h1, h2, h3, h4, .font-heading {
 
 .btn-back-criteria-pink {
   position: relative;
-  background: linear-gradient(135deg, #FF2A85 0%, #ff4797 50%, #E91E6C 100%);
+  background: linear-gradient(135deg, #FF2A85 0%, #ff4797 45%, #FFC93C 100%);
   color: #fff;
-  border: 2.5px solid #090214;
-  border-radius: 10px;
-  padding: 16px 36px;
-  font-size: 15.5px;
+  border: 3px solid #090214;
+  border-radius: 12px;
+  padding: 18px 44px;
+  font-size: 16px;
   font-weight: 900;
   font-family: var(--font-main);
   cursor: pointer;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
   box-shadow:
-    3px 4px 0px #090214,
-    0 0 20px rgba(255, 42, 133, 0.45),
-    0 0 50px rgba(255, 42, 133, 0.15);
+    4px 5px 0px #090214,
+    0 0 28px rgba(255, 42, 133, 0.55),
+    0 0 60px rgba(255, 42, 133, 0.22);
   transition: all 0.22s ease;
   overflow: hidden;
-  animation: borderGlowPink 2.5s ease-in-out infinite;
 }
 
-/* Shimmer sweep across the button */
+/* Vệt sáng lướt qua nút */
 .btn-back-criteria-pink::before {
   content: '';
   position: absolute;
